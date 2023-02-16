@@ -1,9 +1,14 @@
 {
   "APIproject": [
     {
-      "id": 1,
-      "name": "json-server",
-      "author": "typicode"
+      "name": "NỘI THẤT KOSI 2",
+      "date": "04/06/2003",
+      "id": 3
+    },
+    {
+      "name": "NỘI THẤT KOSI 3",
+      "date": "04/06/2004",
+      "id": 4
     }
   ]
 }
