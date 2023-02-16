@@ -4,19 +4,22 @@ import { router, useEffect, useState } from "../lib"
 const projectEditAdmin= ({id})=>{
     const [project, setProject] = useState({});
     useEffect(function(){
-        axios.get(`http://localhost:3000/APIproject/${id}`).then(({data})=>setProject(data))
+        axios.get(`https://xi7f7j-8080.preview.csb.app/api/APIproject/${id}`).then(({data})=>setProject(data))
     },[])
     useEffect(function(){
-        const formEdit = document.querySelector("#form-edit")
-        const nameProject = document.querySelector("#nameProject")
-        const date = document.querySelector("#date")
+        const formEdit = document.querySelector("#form-edit");
+        const nameProject = document.querySelector("#nameProject");
+        const date = document.querySelector("#date");
+        const language = document.querySelector("#language");
         formEdit.addEventListener("submit", function(e){
             e.preventDefault();
             const formData = {
                 name: nameProject.value,
                 date: date.value,
+                language: language.value,
+                gallery: urls,
             };
-            axios.put(`http://localhost:3000/APIproject/${id}`, formData)
+            axios.put(`https://xi7f7j-8080.preview.csb.app/api/APIproject/${id}`, formData)
             .then(()=> router.navigate("/admin/projectListAdmin"))
             .catch(()=> alert("Edit to fail !"))
         })
@@ -32,6 +35,10 @@ const projectEditAdmin= ({id})=>{
             <div class="">
                 <label for="" class="block text-[#ffff]">Date</label>
                 <input id="date" type=" text" class="border w-full outline-none p-2" value="${project.date}">
+            </div>
+            <div class="">
+                <label for="" class="block text-[#ffff]">Date</label>
+                <input id="language" type=" text" class="border w-full outline-none p-2" value="${project.language}">
             </div>
             <div class="">
                 <input type="submit"

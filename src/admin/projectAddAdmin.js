@@ -6,14 +6,54 @@ const projectAddAdmin = ()=>{
     const form = document.querySelector("#form");
     const nameProject = document.querySelector("#name_project");
     const dateProject = document.querySelector("#date");
-    form.addEventListener("submit", function(e){
+    const image = document.querySelector("#image_project");
+    const language = document.querySelector("#language");
+    form.addEventListener("submit",async function(e){
       e.preventDefault();
-      const projectAdd = {name: nameProject.value, date: dateProject.value}
-      axios.post("http://localhost:3000/APIproject", projectAdd)
+
+      const urls = await uploadFiles(image.files)
+
+
+      const projectAdd = {
+        name: nameProject.value, 
+        date: dateProject.value,
+        language: language.value,
+        gallery: urls,
+      }
+      axios.post("https://xi7f7j-8080.preview.csb.app/api/APIproject", projectAdd)
       .then(()=> router.navigate("/admin/projectListAdmin"))
       .catch(()=> alert("Add to Fail !"))
     })
-  })
+  });
+
+  const uploadFiles = async (files)=>{
+    if(files){
+      const cloud_name = "dwzh9i6xf";
+      const preset_name ="duanECMA";
+      const folder_name = "duanECMA_portforlio";
+      const urls= [];
+      const api = `https://api.cloudinary.com/v1_1/${cloud_name}/image/upload`;
+
+
+      const formData = new FormData();
+
+
+      formData.append("upload_preset", preset_name);
+      formData.append("folder", folder_name);
+
+      for(const file of files){
+        formData.append('file', file);
+        const response = await axios.post(api, formData, {
+          headers:{
+            "Content-Type": "multipart/form-data"
+          },
+        })
+        urls.push(response.data.secure_url) 
+      }
+      return urls;
+
+      }
+  };
     return `
     <div class="max-w-6xl m-auto">
       <form action="" id="form">
@@ -25,6 +65,14 @@ const projectAddAdmin = ()=>{
           <div class="">
               <label for="" class="block text-[#ffff]">Date</label>
               <input id="date" type="text" class="border w-full outline-none p-2">
+          </div>
+          <div class="">
+              <label for="" class="block text-[#ffff]">Language Use</label>
+              <input id="language" type="text" class="border w-full outline-none p-2">
+          </div>
+          <div>
+              <label for="" class="block text-[#ffff]">Image</label>
+              <input id="image_project" type="file" class="border w-full outline-none p-2 text-[#ffff]" multiple>
           </div>
           <div class="">
               <input type="submit"

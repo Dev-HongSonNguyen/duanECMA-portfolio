@@ -3,14 +3,14 @@ import { useEffect, useState } from "../lib"
 const HomePage = ()=>{
     const [project, setProject] = useState([]);
     useEffect(()=>{
-        axios.get("http://localhost:3000/APIproject").then(({data})=>setProject(data))
+        axios.get("https://xi7f7j-8080.preview.csb.app/api/APIproject").then(({data})=>setProject(data))
     },[])
     return `
-    <div class="w-full bg-[#232529] py-[10px] fixed top-0 left-0 z-20" id="backtop">
+    <div class="w-full bg-[#232529] py-[10px] fixed top-0 left-0 z-20">
         <div class="max-w-6xl m-auto flex justify-between items-center py-3">
             <!-- //logo -->
             <div class="">
-                <a href="">
+                <a href="#home">
                     <!-- <img class="w-[120px]" src="./img/logo-1.png" alt=""> -->
                     <h1 class="text-[#ffff] text-[18px]">DEV <span class="text-[#f75023]">HONG SON NGUYEN</span></h1>
                 </a>
@@ -18,7 +18,7 @@ const HomePage = ()=>{
             <!-- //menu -->
             <div class="">
                 <ul class="flex items-center gap-[50px]">
-                    <li><a class="text-[16px] text-[#f75023] font-bold tracking-[1px]" href="">Home</a></li>
+                    <li><a class="text-[16px] text-[#f75023] font-bold tracking-[1px]" href="#home">Home</a></li>
                     <li><a class="text-[16px] text-[#ffff] hover:text-[#f75023] tra font-bold tracking-[1px]"
                             href="#about">About</a>
                     </li>
@@ -27,7 +27,7 @@ const HomePage = ()=>{
                     </li>
                     <li><a id="#contact"
                             class="text-[16px] text-[#ffff] hover:text-[#f75023] tra font-bold tracking-[1px]"
-                            href="">Contact</a>
+                            href="#contact">Contact</a>
                     </li>
                     <li><a href="/admin/projectListAdmin"
                             class="text-[16px] text-[#f75023] tra font-bold tracking-[1px] border px-10 py-2 border-[#f75023] hover:bg-[#f75023] hover:text-[#ffff] rounded-md">ADMIN</a>
@@ -37,7 +37,7 @@ const HomePage = ()=>{
         </div>
     </div>
     <!-- DETAIL -->
-    <div class="w-full bg-[#2b2d33] py-[100px] mt-[70px]">
+    <div class="w-full bg-[#2b2d33] py-[100px] mt-[70px]" id="home">
         <div class="max-w-6xl m-auto flex justify-between items-center w-full">
             <div class="w-[50%]">
                 <div class="text-[40px] text-[#f75023] font-bold ">
@@ -58,7 +58,7 @@ const HomePage = ()=>{
                     <div class="flex items-center">
                         <div class="mr-[10px]">
                             <a class="bg-[#f75023] text-[#ffff] tra font-bold tracking-[1px] border px-10 py-2 border-[#f75023] hover:bg-[#2b2d33] rounded-md inline-block"
-                                href=""><span>About Me</span></a>
+                                href="#about"><span>About Me</span></a>
                         </div>
                         <div class="">
                             <ul class="flex items-center">
@@ -184,7 +184,7 @@ const HomePage = ()=>{
                     you for reading !
                 </p>
                 <a class="bg-[#f75023] text-[#ffff] tra font-bold tracking-[1px] border px-10 py-2 border-[#f75023] hover:bg-[#2b2d33] rounded-md inline-block"
-                    href=""><span>Contact Me</span></a>
+                    href="#contact"><span>Contact Me</span></a>
                 <div class="absolute top-[100px] right-[-150px]">
                     <img src="https://res.cloudinary.com/freelencer/image/upload/v1676456960/img-portfolio/img-7_k32cbc.png"
                         alt="">
@@ -225,11 +225,11 @@ const HomePage = ()=>{
                     <div class="rounded-xl overflow-hidden">
                         <a href="">
                             <img class="hover:scale-110 transition w-full rounded-md"
-                                src="https://res.cloudinary.com/freelencer/image/upload/v1676456959/img-portfolio/pr-4_yfu0vj.jpg"
+                                src="${item.gallery}"
                                 alt="">
                         </a>
                     </div>
-                    <div class="py-5">
+                    <div class="py-3">
                         <a href="">
                             <h2 class="text-[#ffff]">${item.name}</h2>
                         </a>
@@ -241,24 +241,16 @@ const HomePage = ()=>{
                             </svg>
                             <span class="text-[#ffff] text-[10px] pl-[10px] pt-[2px]">${item.date}</span>
                         </div>
-                        <ul class="flex items-center">
+                        <ul class="">
                             <li class="">
                                 <a class="px-2 py-[1px] hover:bg-[#f75023] border border-[#F75023] rounded-md text-[#ffff] text-[12px]"
-                                    href="">HTML</a>
-                            </li>
-                            <li class="">
-                                <a class="mx-2 px-2 py-[1px] hover:bg-[#f75023] border border-[#F75023] rounded-md text-[#ffff] text-[12px]"
-                                    href="">CSS</a>
-                            </li>
-                            <li class="">
-                                <a class="px-2 py-[1px] hover:bg-[#f75023] border border-[#F75023] rounded-md text-[#ffff] text-[12px]"
-                                    href="">JS</a>
+                                    href="">${item.language}</a>
                             </li>
                         </ul>
                     </div>
                     <div>
-                        <a href=""
-                            class="text-[10px] text-[#ffff] tra font-bold tracking-[1px] border px-10 py-2 border-[#f75023] hover:bg-[#f75023] hover:text-[#ffff] rounded-md">View
+                        <a href="https://github.com/Dev-HongSonNguyen"
+                            class="text-[10px] text-[#ffff] font-bold tracking-[1px] border px-10 py-2 border-[#f75023] hover:bg-[#f75023] hover:text-[#ffff] rounded-md">View
                             source code git </a>
                     </div>
                 </div>
@@ -270,7 +262,7 @@ const HomePage = ()=>{
     </div>
     <!-- CONTACT -->
     <div class="w-full bg-[#2b2d33]">
-        <div class="max-w-6xl m-auto py-[50px] relative">
+        <div class="max-w-6xl m-auto py-[50px] relative" id="contact">
             <div class="pb-[100px]">
                 <div class="text-center">
                     <p class="text-[22px] text-[#f75023]">Contact me</p>
