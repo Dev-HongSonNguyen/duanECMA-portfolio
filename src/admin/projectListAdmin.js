@@ -23,25 +23,25 @@ const projectListAdmin = ()=>{
     return `
     <div class="max-w-6xl m-auto">
     <h1 class="text-center text-[#f75023] font-bold">MY PROJECT</h1>
-    <a class="" href="/admin/projectAddAdmin">Add</a>
+    <a class="text-[#ffff]" href="/admin/projectAddAdmin">ADD</a>
     <table class="w-full border">
         <thead class="border">
-            <th class="border">STT</th>
-            <th class="border">NAME PROJECT</th>
-            <th class="border">DATE</th>
-            <th class="border">ACTION</th>
+            <th class="border text-[#ffff]">STT</th>
+            <th class="border text-[#ffff]">NAME PROJECT</th>
+            <th class="border text-[#ffff]">DATE</th>
+            <th class="border text-[#ffff]">ACTION</th>
         </thead>
         ${projects.map(function(item, index){
             return `
             <tbody>
                 <tr class="text-center">
-                    <td class="border">${index+1}</td>
-                    <td class="border">${item.name}</td>
+                    <td class="border text-[#ffff]">${index+1}</td>
+                    <td class="border text-[#ffff]">${item.name}</td>
                     
-                    <td class="border">${item.date}</td>
-                    <td class="border">
+                    <td class="border text-[#ffff]">${item.date}</td>
+                    <td class="border text-[#ffff]">
                         <button data-id=${item.id} class="bg-red-600 p-5 py-2 text-[#ffff] btn_delete">DELETE</button>
-                        <button class="bg-blue-900 p-5 py-2 text-[#ffff]">SETTING</button>
+                        <a href="/admin/projectEditAdmin/${item.id}" class="bg-blue-900 p-5 py-2 text-[#ffff]">SETTING</a>
                     </td>
                 </tr>
         </tbody>

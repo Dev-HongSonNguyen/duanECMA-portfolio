@@ -8,5 +8,5 @@ const app = document.querySelector("#app");
 router.on("/", ()=>render(HomePage, app))
 router.on("/admin/projectListAdmin", ()=>render(projectListAdmin, app))
 router.on("/admin/projectAddAdmin", ()=>render(projectAddAdmin, app))
-router.on("/admin/projectEditAdmin", ()=>render(projectEditAdmin, app))
+router.on("/admin/projectEditAdmin/:id", ({data})=> render(()=>projectEditAdmin(data),app));
 router.resolve();

@@ -19,11 +19,11 @@ const projectAddAdmin = ()=>{
       <form action="" id="form">
           <h1 class="text-center text-[#f75023] font-bold">ADD PROJECT</h1>
           <div>
-              <label for="" class="block">Name Project</label>
+              <label for="" class="block text-[#ffff]">Name Project</label>
               <input id="name_project" "type="text" class="border w-full outline-none p-2">
           </div>
           <div class="">
-              <label for="" class="block">Date</label>
+              <label for="" class="block text-[#ffff]">Date</label>
               <input id="date" type="text" class="border w-full outline-none p-2">
           </div>
           <div class="">

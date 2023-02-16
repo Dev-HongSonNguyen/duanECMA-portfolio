@@ -1,18 +1,37 @@
 import axios from "axios";
-import { useEffect, useState } from "../lib"
+import { router, useEffect, useState } from "../lib"
 
-const projectEditAdmin= ()=>{
+const projectEditAdmin= ({id})=>{
+    const [project, setProject] = useState({});
+    useEffect(function(){
+        axios.get(`http://localhost:3000/APIproject/${id}`).then(({data})=>setProject(data))
+    },[])
+    useEffect(function(){
+        const formEdit = document.querySelector("#form-edit")
+        const nameProject = document.querySelector("#nameProject")
+        const date = document.querySelector("#date")
+        formEdit.addEventListener("submit", function(e){
+            e.preventDefault();
+            const formData = {
+                name: nameProject.value,
+                date: date.value,
+            };
+            axios.put(`http://localhost:3000/APIproject/${id}`, formData)
+            .then(()=> router.navigate("/admin/projectListAdmin"))
+            .catch(()=> alert("Edit to fail !"))
+        })
+    })
     return `
     <div class="max-w-6xl m-auto">
-        <form action="">
+        <form action="" id="form-edit">
             <h1 class="text-center text-[#f75023] font-bold">EDIT PROJECT</h1>
             <div>
                 <label for="" class="block text-[#ffff]">Name Project</label>
-                <input type="text" class="border w-full outline-none p-2" value="">
+                <input id="nameProject" type="text" class="border w-full outline-none p-2" value="${project.name}">
             </div>
             <div class="">
                 <label for="" class="block text-[#ffff]">Date</label>
-                <input type=" text" class="border w-full outline-none p-2" value="">
+                <input id="date" type=" text" class="border w-full outline-none p-2" value="${project.date}">
             </div>
             <div class="">
                 <input type="submit"
