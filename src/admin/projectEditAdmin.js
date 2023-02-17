@@ -1,10 +1,11 @@
 import axios from "axios";
+import headerAdmin from "../../components/headerAdmin";
 import { router, useEffect, useState } from "../lib"
 
 const projectEditAdmin= ({id})=>{
     const [project, setProject] = useState({});
     useEffect(function(){
-        axios.get(`https://xi7f7j-8080.preview.csb.app/api/APIproject/${id}`).then(({data})=>setProject(data))
+        axios.get(`https://s2qbne-8080.preview.csb.app/api/APIproject/${id}`).then(({data})=>setProject(data))
     },[])
     useEffect(function(){
         const formEdit = document.querySelector("#form-edit");
@@ -19,12 +20,13 @@ const projectEditAdmin= ({id})=>{
                 language: language.value,
                 gallery: urls,
             };
-            axios.put(`https://xi7f7j-8080.preview.csb.app/api/APIproject/${id}`, formData)
+            axios.put(`https://s2qbne-8080.preview.csb.app/api/APIproject/${id}`, formData)
             .then(()=> router.navigate("/admin/projectListAdmin"))
             .catch(()=> alert("Edit to fail !"))
         })
     })
     return `
+    ${headerAdmin()}
     <div class="max-w-6xl m-auto">
         <form action="" id="form-edit">
             <h1 class="text-center text-[#f75023] font-bold">EDIT PROJECT</h1>

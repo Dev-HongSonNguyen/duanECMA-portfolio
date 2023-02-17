@@ -1,4 +1,5 @@
 import axios from "axios";
+import headerAdmin from "../../components/headerAdmin";
 import { router, useEffect } from "../lib"
 
 const projectAddAdmin = ()=>{
@@ -20,7 +21,7 @@ const projectAddAdmin = ()=>{
         language: language.value,
         gallery: urls,
       }
-      axios.post("https://xi7f7j-8080.preview.csb.app/api/APIproject", projectAdd)
+      axios.post("https://s2qbne-8080.preview.csb.app/api/APIproject", projectAdd)
       .then(()=> router.navigate("/admin/projectListAdmin"))
       .catch(()=> alert("Add to Fail !"))
     })
@@ -55,6 +56,7 @@ const projectAddAdmin = ()=>{
       }
   };
     return `
+    ${headerAdmin()}
     <div class="max-w-6xl m-auto">
       <form action="" id="form">
           <h1 class="text-center text-[#f75023] font-bold">ADD PROJECT</h1>

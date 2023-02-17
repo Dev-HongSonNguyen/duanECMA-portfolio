@@ -1,19 +1,18 @@
 import axios from "axios";
+import headerAdmin from "../../components/headerAdmin";
 import { useEffect, useState } from "../lib"
 
 const projectListAdmin = ()=>{
     const [projects, setProject] = useState([]);
     useEffect(()=>{
-        axios.get("https://xi7f7j-8080.preview.csb.app/api/APIproject").then(({data})=>setProject(data))
+        axios.get("https://s2qbne-8080.preview.csb.app/api/APIproject").then(({data})=>setProject(data))
     },[])
-    console.log(projects);
     useEffect(()=>{
         const btn_delete = document.querySelectorAll(".btn_delete");
         for(let btn of btn_delete){
             btn.addEventListener("click", function(){
                 const idOr = this.dataset.id;
-                console.log(idOr);
-                axios.delete(`https://xi7f7j-8080.preview.csb.app/api/APIproject/${idOr}`)
+                axios.delete(`https://s2qbne-8080.preview.csb.app/api/APIproject/${idOr}`)
                 .then(()=> {
                     const newProject = projects.filter((item)=> item.id != idOr);
                     setProject(newProject)
@@ -22,6 +21,7 @@ const projectListAdmin = ()=>{
         }
     })
     return `
+    ${headerAdmin()}
     <div class="max-w-6xl m-auto my-5">
     <h1 class="text-center text-[#f75023] font-bold">MY PROJECT</h1>
     <a class="text-[#ffff] bg-[#f75023] px-5 py-1 mb-2 inline-block text-[14px]" href="/admin/projectAddAdmin">ADD</a>
