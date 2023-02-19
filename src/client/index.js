@@ -36,7 +36,7 @@ const HomePage = ()=>{
                             class="text-[16px] text-[#ffff] hover:text-[#f75023] tra font-bold tracking-[1px]"
                             href="#skill">Skill</a>
                     </li>
-                    <li><a href=""
+                    <li><a href="https://drive.google.com/file/d/1gIOs38muFP1DrZCHIoGzN027C6-RRqll/view?usp=share_link"
                             class="text-[16px] text-[#f75023] tra font-bold tracking-[1px] border px-10 py-2 border-[#f75023] hover:bg-[#f75023] hover:text-[#ffff] rounded-md">DOWNLOAD CV</a>
                     </li>
                 </ul>
