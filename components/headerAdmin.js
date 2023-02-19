@@ -19,7 +19,7 @@ const headerAdmin = ()=>{
                     </li>
                     <li><a id="#contact"
                             class="text-[16px] text-[#ffff] hover:text-[#f75023] tra font-bold tracking-[1px]"
-                            href="">About</a>
+                            href="/admin/aboutAdmin">About</a>
                     </li>
                     <li><a href="/"
                             class="text-[16px] text-[#f75023] tra font-bold tracking-[1px] border px-10 py-2 border-[#f75023] hover:bg-[#f75023] hover:text-[#ffff] rounded-md">VIEW

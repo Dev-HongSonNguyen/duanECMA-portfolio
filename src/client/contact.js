@@ -19,8 +19,8 @@ const contact = ()=>{
                 note: note.value,
             }
             axios.post("https://s2qbne-8080.preview.csb.app/api/APIusers", newUser)
-            .then(()=> alert("Submit successfully !"))
-            .catch(()=> alert ("Submit to fail !"))
+            .then(() => alert("Submit successfully !"))
+            .catch(()=> alert("Submit to fail !"))
         })
     })
     return `
@@ -87,13 +87,13 @@ const contact = ()=>{
                         <div class="grid grid-cols-2 gap-4">
                             <input type="text"
                                 class="text-[#ffff] bg-transparent border border-[#6f6b80] rounded-md py-3 px-7 outline-none "
-                                placeholder="Your name" id="name">
+                                placeholder="Your name" id="name" required>
                             <input type="text"
                                 class="text-[#ffff] bg-transparent border border-[#6f6b80] rounded-md py-3 px-7 outline-none "
-                                placeholder="Your email" id="email">
+                                placeholder="Your email" id="email" required>
                             <input type="text"
                                 class="text-[#ffff] bg-transparent border border-[#6f6b80] rounded-md py-3 px-7 outline-none "
-                                placeholder="Your phone" id="phone">
+                                placeholder="Your phone" id="phone" required>
                             <input type="text"
                                 class="text-[#ffff] bg-transparent border border-[#6f6b80] rounded-md py-3 px-7 outline-none "
                                 placeholder="Subject" id="subject">

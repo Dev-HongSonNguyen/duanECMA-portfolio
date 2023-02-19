@@ -18,7 +18,6 @@ const projectEditAdmin= ({id})=>{
                 name: nameProject.value,
                 date: date.value,
                 language: language.value,
-                gallery: urls,
             };
             axios.put(`https://s2qbne-8080.preview.csb.app/api/APIproject/${id}`, formData)
             .then(()=> router.navigate("/admin/projectListAdmin"))
@@ -36,7 +35,7 @@ const projectEditAdmin= ({id})=>{
             </div>
             <div class="">
                 <label for="" class="block text-[#ffff]">Date</label>
-                <input id="date" type=" text" class="border w-full outline-none p-2" value="${project.date}">
+                <input id="date" type="date" class="border w-full outline-none p-2" value="${project.date}">
             </div>
             <div class="">
                 <label for="" class="block text-[#ffff]">Date</label>

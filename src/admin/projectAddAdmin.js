@@ -66,7 +66,7 @@ const projectAddAdmin = ()=>{
           </div>
           <div class="">
               <label for="" class="block text-[#ffff]">Date</label>
-              <input id="date" type="text" class="border w-full outline-none p-2">
+              <input id="date" type="date" class="border w-full outline-none p-2">
           </div>
           <div class="">
               <label for="" class="block text-[#ffff]">Language Use</label>
