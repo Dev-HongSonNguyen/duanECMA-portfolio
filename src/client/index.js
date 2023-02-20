@@ -4,13 +4,30 @@ import about from "./about";
 import contact from "./contact";
 const HomePage = ()=>{
     const [project, setProject] = useState([]);
+    const [admin, setAdmin] = useState([]);
+    useEffect(()=>{
+        axios.get("https://s2qbne-8080.preview.csb.app/api/APIadmin").then(({data})=>setAdmin(data))
+    },[])
     useEffect(()=>{
         axios.get("https://s2qbne-8080.preview.csb.app/api/APIproject").then(({data})=>setProject(data))
     },[])
-
+    useEffect(()=>{
+        const btn_open = document.querySelector("#btn_open");
+        const modal_container = document.querySelector("#modal-container")
+        const btn_close = document.querySelector("#btn_close")
+        btn_open.addEventListener("click", function () {
+        modal_container.classList.add("show")})
+        btn_close.addEventListener("click", function () {
+        modal_container.classList.remove("show")})
+    })
+    // useEffect(()=>{
+    //     const emailLogin = document.querySelector("#emailLogin");
+    //     const passwordLogin = document.querySelector("#passwordLogin");
+    //     console.log(emailLogin);
+    // })
     return `
     <div class="w-full bg-[#232529] py-[10px] fixed top-0 left-0 z-20">
-        <div class="max-w-6xl m-auto flex justify-between items-center py-3">
+        <div class="max-w-6xl m-auto md:flex justify-between items-center py-3">
             <!-- //logo -->
             <div class="">
                 <a href="#home">
@@ -19,7 +36,7 @@ const HomePage = ()=>{
                 </a>
             </div>
             <!-- //menu -->
-            <div class="">
+            <div class="hidden md:block">
                 <ul class="flex items-center gap-[50px]">
                     <li><a class="text-[16px] text-[#f75023] font-bold tracking-[1px]" href="#home">Home</a></li>
                     <li><a class="text-[16px] text-[#ffff] hover:text-[#f75023] tra font-bold tracking-[1px]"
@@ -36,17 +53,36 @@ const HomePage = ()=>{
                             class="text-[16px] text-[#ffff] hover:text-[#f75023] tra font-bold tracking-[1px]"
                             href="#skill">Skill</a>
                     </li>
-                    <li><a href="https://drive.google.com/file/d/1gIOs38muFP1DrZCHIoGzN027C6-RRqll/view?usp=share_link"
-                            class="text-[16px] text-[#f75023] tra font-bold tracking-[1px] border px-10 py-2 border-[#f75023] hover:bg-[#f75023] hover:text-[#ffff] rounded-md">DOWNLOAD CV</a>
+                    <li><button id="btn_open" class="bg-[#f75023] text-[#ffff] tra font-bold tracking-[1px] border px-10 py-2 border-[#f75023] hover:bg-[#2b2d33] rounded-md block">ADMIN</button>
                     </li>
                 </ul>
             </div>
         </div>
+        <!-- LOGIN -->
+        <div class="" id="modal-container">
+            <div class="" id="modal">
+                <button id="btn_close">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-6 h-6 text-[#f75023] absolute right-[10px] top-[10px]">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+                <!-- <h1 class="text-center">LOGIN</h1> -->
+                <form action="" class="text-center px-[40px] pt-[85px]" id="formLogin">
+                    <input id="emailLogin" class="w-full border outline-none p-5 my-2 text-[10px] bg-[#2b2d33] text-[#ffff]"
+                        type="email" placeholder="Email" required>
+                    <input id="passwordLogin" class="w-full border outline-none p-5 my-2 text-[10px] bg-[#2b2d33] text-[#ffff]"
+                        type="password" placeholder="Password" required>
+                    <button class="bg-[#f75023] text-[#ffff] px-5 py-2 text-[12px] mt-2">LOGIN</button>
+                </form>
+            </div>
+      </div>
     </div>
+    
     <!-- DETAIL -->
     <div class="w-full bg-[#2b2d33] py-[100px] mt-[70px]" id="home">
-        <div class="max-w-6xl m-auto flex justify-between items-center w-full">
-            <div class="w-[50%]">
+        <div class="max-w-6xl m-auto md:flex justify-between items-center w-full">
+            <div class="md:w-[50%] ">
                 <div class="text-[40px] text-[#f75023] font-bold ">
                     <h3 class="">Hello, I'm</h3>
                 </div>
@@ -65,7 +101,7 @@ const HomePage = ()=>{
                     <div class="flex items-center">
                         <div class="mr-[10px]">
                             <a class="bg-[#f75023] text-[#ffff] tra font-bold tracking-[1px] border px-10 py-2 border-[#f75023] hover:bg-[#2b2d33] rounded-md inline-block"
-                                href="#about"><span>About Me</span></a>
+                                href="https://drive.google.com/file/d/1gIOs38muFP1DrZCHIoGzN027C6-RRqll/view?usp=share_link"><span>DOWNLOAD CV</span></a>
                         </div>
                         <div class="">
                             <ul class="flex items-center">
@@ -85,26 +121,26 @@ const HomePage = ()=>{
                     </div>
                 </div>
             </div>
-            <div class="w-[50%] pl-[150px] relative z-10">
-                <img class="w-[70%]"
+            <div class="md:w-[50%] pl-[150px] relative z-10">
+                <img class="md:w-[70%]"
                     src="https://res.cloudinary.com/freelencer/image/upload/v1676456968/img-portfolio/img-1_cmf5v5.png"
                     alt="">
                 <div class="absolute top-0">
-                    <img class="w-[100px]"
+                    <img class="w-[100px] hidden md:block"
                         src="https://res.cloudinary.com/freelencer/image/upload/v1676456961/img-portfolio/img-2_dkxgcs.webp"
                         alt="">
                 </div>
-                <div class="absolute right-[30px] top-[120px]">
+                <div class="absolute right-[30px] top-[120px] hidden md:block">
                     <img class="w-[100px]"
                         src="https://res.cloudinary.com/freelencer/image/upload/v1676456963/img-portfolio/img-3_gsjhv3.png"
                         alt="">
                 </div>
-                <div class="absolute bottom-[-50px]">
+                <div class="absolute bottom-[-50px] hidden md:block">
                     <img class="w-[100px]"
                         src="https://res.cloudinary.com/freelencer/image/upload/v1676456964/img-portfolio/img-5_kdykym.png"
                         alt="">
                 </div>
-                <div class="absolute right-[70px] top-[400px]">
+                <div class="absolute right-[70px] top-[400px] hidden md:block">
                     <img class="w-[100px]"
                         src="https://res.cloudinary.com/freelencer/image/upload/v1676456964/img-portfolio/img-4_rronle.png"
                         alt="">
@@ -328,10 +364,10 @@ const HomePage = ()=>{
     <!-- MAP -->
     <div class="bg-[#2b2d33] w-full pb-[100px]">
         <div class="pt-[100px] max-w-6xl m-auto">
-            <iframe
+            <!--<iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.9333644911353!2d105.73999421484174!3d21.035352092929212!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3134548c1eecba2b%3A0x45bf0bfbb337613e!2zNjkgTmcuIDE0MyDEkC4gWHXDom4gUGjGsMahbmcsIFh1w6JuIFBoxrDGoW5nLCBU4burIExpw6ptLCBIw6AgTuG7mWksIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1676453222493!5m2!1svi!2s"
                 width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade" class="w-full rounded-md"></iframe>
+                referrerpolicy="no-referrer-when-downgrade" class="w-full rounded-md"></iframe> -->
         </div>
     </div>
     <!-- FOOTER -->

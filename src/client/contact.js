@@ -30,7 +30,7 @@ const contact = ()=>{
                 <div class="text-center">
                     <p class="text-[22px] text-[#f75023]">Contact me</p>
                     <h4 class="text-[40px] text-[#ffff] py-5">I Want To Hear From You</h4>
-                    <p class="text-[#b9b5c9] text-[12px] w-[500px] m-auto">Please fill out the form on this section
+                    <p class="text-[#b9b5c9] text-[12px] md:w-[500px] m-auto">Please fill out the form on this section
                         to
                         contact
                         with me. Or call between 9:00 a.m.

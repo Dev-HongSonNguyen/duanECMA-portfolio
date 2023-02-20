@@ -33,7 +33,7 @@ const about = () => {
           </p>
           <a class="bg-[#f75023] text-[#ffff] tra font-bold tracking-[1px] border px-10 py-2 border-[#f75023] hover:bg-[#2b2d33] rounded-md inline-block"
               href="#contact"><span>Contact Me</span></a>
-          <div class="absolute top-[100px] right-[-150px]">
+          <div class="absolute top-[100px] right-[-150px] hidden md:block">
               <img src="https://res.cloudinary.com/freelencer/image/upload/v1676456960/img-portfolio/img-7_k32cbc.png"
                   alt="">
           </div>
