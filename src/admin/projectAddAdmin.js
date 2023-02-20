@@ -52,7 +52,6 @@ const projectAddAdmin = ()=>{
         urls.push(response.data.secure_url) 
       }
       return urls;
-
       }
   };
     return `

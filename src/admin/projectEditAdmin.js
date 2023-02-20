@@ -12,6 +12,7 @@ const projectEditAdmin= ({id})=>{
         const nameProject = document.querySelector("#nameProject");
         const date = document.querySelector("#date");
         const language = document.querySelector("#language");
+        const image = document.querySelector("#image");
         formEdit.addEventListener("submit", function(e){
             e.preventDefault();
             const formData = {
