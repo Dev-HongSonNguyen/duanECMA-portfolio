@@ -19,7 +19,7 @@ const contact = ()=>{
                 note: note.value,
             }
             axios.post("https://s2qbne-8080.preview.csb.app/api/APIusers", newUser)
-            .then(() => alert("Submit successfully !"))
+            .then(()=> alert("Submit successfully !"))
             .catch(()=> alert("Submit to fail !"))
         })
     })
