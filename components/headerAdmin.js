@@ -15,15 +15,15 @@ const headerAdmin = ()=>{
                     <li><a class="text-[16px] text-[#f75023] tra font-bold tracking-[1px]" href="/admin/projectListAdmin">Project</a>
                     </li>
                     <li><a class="text-[16px] text-[#ffff] hover:text-[#f75023] tra font-bold tracking-[1px]"
-                            href="/admin/userListAdmin">Users</a>
+                            href="#/admin/userListAdmin">Users</a>
                     </li>
                     <li><a id="#contact"
                             class="text-[16px] text-[#ffff] hover:text-[#f75023] tra font-bold tracking-[1px]"
-                            href="/admin/aboutAdmin">About</a>
+                            href="#/admin/aboutAdmin">About</a>
                     </li>
                     <li><a id="#contact"
                             class="text-[16px] text-[#ffff] hover:text-[#f75023] tra font-bold tracking-[1px]"
-                            href="/admin/userAdmin">Acount Admin</a>
+                            href="#/admin/userAdmin">Acount Admin</a>
                     </li>
                     <li><a href="/"
                             class="text-[16px] text-[#f75023] tra font-bold tracking-[1px] border px-10 py-2 border-[#f75023] hover:bg-[#f75023] hover:text-[#ffff] rounded-md">VIEW
