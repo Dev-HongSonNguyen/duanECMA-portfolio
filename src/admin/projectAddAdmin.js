@@ -1,14 +1,21 @@
 import axios from "axios";
 import headerAdmin from "../../components/headerAdmin";
-import { router, useEffect } from "../lib"
+import { router, useEffect, useState } from "../lib"
 
 const projectAddAdmin = ()=>{
+  const [category, setCategory] = useState([]);
+  useEffect(()=>{
+    axios.get("https://s2qbne-8080.preview.csb.app/api/categories").then(({data})=> setCategory(data))
+  },[])
   useEffect(function(){
     const form = document.querySelector("#form");
     const nameProject = document.querySelector("#name_project");
     const dateProject = document.querySelector("#date");
     const image = document.querySelector("#image_project");
-    const language = document.querySelector("#language");
+    const role = document.querySelector("#role");
+    const preview = document.querySelector("#preview");
+    const des = document.querySelector("#des");
+    const category = document.querySelector("#category")
     form.addEventListener("submit",async function(e){
       e.preventDefault();
 
@@ -18,11 +25,15 @@ const projectAddAdmin = ()=>{
       const projectAdd = {
         name: nameProject.value, 
         date: dateProject.value,
-        language: language.value,
+        role: role.value,
+        preview: preview.value,
+        des: des.value,
+        categoryId: Number(category.value),
         gallery: urls,
       }
       axios.post("https://s2qbne-8080.preview.csb.app/api/APIproject", projectAdd)
-      .then(()=> router.navigate("/admin/projectListAdmin"))
+      .then(()=> alert ("Thêm thành công !"))
+      .then(()=> router.navigate("/admin/projectAdmin"))
       .catch(()=> alert("Add to Fail !"))
     })
   });
@@ -35,9 +46,7 @@ const projectAddAdmin = ()=>{
       const urls= [];
       const api = `https://api.cloudinary.com/v1_1/${cloud_name}/image/upload`;
 
-
       const formData = new FormData();
-
 
       formData.append("upload_preset", preset_name);
       formData.append("folder", folder_name);
@@ -63,17 +72,35 @@ const projectAddAdmin = ()=>{
               <label for="" class="block text-[#ffff]">Name Project</label>
               <input id="name_project" "type="text" class="border w-full outline-none p-2">
           </div>
+          <div>
+              <label for="" class="block text-[#ffff]">Image</label>
+              <input id="image_project" type="file" class="border w-full outline-none p-2 text-[#ffff]" multiple>
+          </div>
           <div class="">
               <label for="" class="block text-[#ffff]">Date</label>
               <input id="date" type="date" class="border w-full outline-none p-2">
           </div>
           <div class="">
-              <label for="" class="block text-[#ffff]">Language Use</label>
-              <input id="language" type="text" class="border w-full outline-none p-2">
+              <label for="" class="block text-[#ffff]">Role</label>
+              <input id="role" type="text" class="border w-full outline-none p-2">
           </div>
-          <div>
-              <label for="" class="block text-[#ffff]">Image</label>
-              <input id="image_project" type="file" class="border w-full outline-none p-2 text-[#ffff]" multiple>
+          <div class="">
+              <label for="" class="block text-[#ffff]">Category</label>
+              <select name="" id="category" class="w-[200px]">
+              ${category.map((item)=>{
+                return `
+                <option id="category" value="${item.id}">${item.name}</option>
+                `
+              }).join("")}
+              </select>
+          </div>
+          <div class="">
+              <label for="" class="block text-[#ffff]">Preview</label>
+              <input id="preview" type="text" class="border w-full outline-none p-2">
+          </div>
+          <div class="">
+              <label for="" class="block text-[#ffff]">Description</label>
+              <input id="des" type="text" class="border w-full outline-none p-2">
           </div>
           <div class="">
               <input type="submit"

@@ -2,94 +2,43 @@ import axios from "axios";
 import { router, useEffect, useState } from "../lib"
 import about from "./about";
 import contact from "./contact";
+import project from "./project";
 const HomePage = ()=>{
-    const [project, setProject] = useState([]);
-    const [admin, setAdmin] = useState([]);
-    useEffect(()=>{
-        axios.get("https://s2qbne-8080.preview.csb.app/api/APIadmin").then(({data})=>setAdmin(data))
-    },[])
-    // console.log(admin);
-    useEffect(()=>{
-        axios.get("https://s2qbne-8080.preview.csb.app/api/APIproject").then(({data})=>setProject(data))
-    },[])
-    useEffect(()=>{
-        const btn_open = document.querySelector("#btn_open");
-        const modal_container = document.querySelector("#modal-container")
-        const btn_close = document.querySelector("#btn_close")
-        btn_open.addEventListener("click", function () {
-        modal_container.classList.add("show")})
-        btn_close.addEventListener("click", function () {
-        modal_container.classList.remove("show")})
-    })
-    useEffect(()=>{
-        const emailLogin = document.querySelector("#emailLogin");
-        const passwordLogin = document.querySelector("#passwordLogin");
-        const formLogin = document.querySelector("#formLogin");
-        formLogin.addEventListener("submit", function(e){
-        e.preventDefault()
-        for(let item of admin){
-            if(item.email == emailLogin.value && item.password == passwordLogin.value){
-                alert ("Login Successfully !")
-                router.navigate("/admin/projectListAdmin");
-            }else{
-                alert ("You have no right !")
-            }
-        }
-        })
-    })
     return `
     <div class="w-full bg-[#232529] py-[10px] fixed top-0 left-0 z-20">
-        <div class="max-w-6xl m-auto md:flex justify-between items-center py-3">
-            <!-- //logo -->
-            <div class="">
-                <a href="#home">
-                    <!-- <img class="w-[120px]" src="./img/logo-1.png" alt=""> -->
-                    <h1 class="text-[#ffff] text-[18px]">DEV <span class="text-[#f75023]">HONG SON NGUYEN</span></h1>
-                </a>
-            </div>
-            <!-- //menu -->
-            <div class="hidden md:block">
-                <ul class="flex items-center gap-[50px]">
-                    <li><a class="text-[16px] text-[#f75023] font-bold tracking-[1px]" href="#home">Home</a></li>
-                    <li><a class="text-[16px] text-[#ffff] hover:text-[#f75023] tra font-bold tracking-[1px]"
-                            href="#about">About</a>
-                    </li>
-                    <li><a class="text-[16px] text-[#ffff] hover:text-[#f75023] tra font-bold tracking-[1px]"
-                            href="#project">Project</a>
-                    </li>
-                    <li><a id="#contact"
-                            class="text-[16px] text-[#ffff] hover:text-[#f75023] tra font-bold tracking-[1px]"
-                            href="#contact">Contact</a>
-                    </li>
-                    <li><a id=""
-                            class="text-[16px] text-[#ffff] hover:text-[#f75023] tra font-bold tracking-[1px]"
-                            href="#skill">Skill</a>
-                    </li>
-                    <li><button id="btn_open" class="bg-[#f75023] text-[#ffff] tra font-bold tracking-[1px] border px-10 py-2 border-[#f75023] hover:bg-[#2b2d33] rounded-md block">ADMIN</button>
-                    </li>
-                </ul>
+            <div class="max-w-6xl m-auto md:flex justify-between items-center py-3">
+                <!-- //logo -->
+                    <div class="">
+                        <a href="#home">
+                            <!-- <img class="w-[120px]" src="./img/logo-1.png" alt=""> -->
+                            <h1 class="text-[#ffff] text-[18px]">DEV <span class="text-[#f75023]">HONG SON NGUYEN</span></h1>
+                        </a>
+                    </div>
+                <!-- //menu -->
+                    <div class="hidden md:block">
+                        <ul class="flex items-center gap-[50px]">
+                            <li><a class="text-[16px] text-[#f75023] font-bold tracking-[1px]" href="#home">Home</a></li>
+                            <li><a class="text-[16px] text-[#ffff] hover:text-[#f75023] tra font-bold tracking-[1px]"
+                                    href="#about">About</a>
+                            </li>
+                            <li><a class="text-[16px] text-[#ffff] hover:text-[#f75023] tra font-bold tracking-[1px]"
+                                    href="#project">Project</a>
+                            </li>
+                            <li><a id="#contact"
+                                    class="text-[16px] text-[#ffff] hover:text-[#f75023] tra font-bold tracking-[1px]"
+                                    href="#contact">Contact</a>
+                            </li>
+                            <li><a id=""
+                                    class="text-[16px] text-[#ffff] hover:text-[#f75023] tra font-bold tracking-[1px]"
+                                    href="#skill">Skill</a>
+                            </li>
+                            <li><a href="/admin/projectAdmin" id="btn_open" class="bg-[#f75023] text-[#ffff] tra font-bold tracking-[1px] border px-10 py-2 border-[#f75023] hover:bg-[#2b2d33] rounded-md block">ADMIN</a>
+                            </li>
+                        </ul>
+                    </div>
             </div>
         </div>
         <!-- LOGIN -->
-        <div class="" id="modal-container">
-        <div class="" id="modal">
-            <button id="btn_close">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" class="w-6 h-6 text-[#f75023] absolute right-[10px] top-[10px]">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-            </button>
-            <!-- <h1 class="text-center">LOGIN</h1> -->
-            <form action="" id="formLogin" class="text-center px-[40px] pt-[85px]">
-                <input id="emailLogin" class="w-full border outline-none p-5 my-2 text-[10px] bg-[#2b2d33] text-[#ffff]"
-                    type="email" placeholder="Email" required>
-                <input id="passwordLogin" class="w-full border outline-none p-5 my-2 text-[10px] bg-[#2b2d33] text-[#ffff]"
-                    type="password" placeholder="Password" required>
-                <button class="bg-[#f75023] text-[#ffff] px-5 py-2 text-[12px] mt-2">LOGIN</button>
-            </form>
-        </div>
-        </div>
-        </div>
     
     <!-- DETAIL -->
     <div class="w-full bg-[#2b2d33] py-[100px] mt-[70px]" id="home">
@@ -172,7 +121,6 @@ const HomePage = ()=>{
                         <path stroke-linecap="round" stroke-linejoin="round"
                             d="M16.5 18.75h-9m9 0a3 3 0 013 3h-15a3 3 0 013-3m9 0v-3.375c0-.621-.503-1.125-1.125-1.125h-.871M7.5 18.75v-3.375c0-.621.504-1.125 1.125-1.125h.872m5.007 0H9.497m5.007 0a7.454 7.454 0 01-.982-3.172M9.497 14.25a7.454 7.454 0 00.981-3.172M5.25 4.236c-.982.143-1.954.317-2.916.52A6.003 6.003 0 007.73 9.728M5.25 4.236V4.5c0 2.108.966 3.99 2.48 5.228M5.25 4.236V2.721C7.456 2.41 9.71 2.25 12 2.25c2.291 0 4.545.16 6.75.47v1.516M7.73 9.728a6.726 6.726 0 002.748 1.35m8.272-6.842V4.5c0 2.108-.966 3.99-2.48 5.228m2.48-5.492a46.32 46.32 0 012.916.52 6.003 6.003 0 01-5.395 4.972m0 0a6.726 6.726 0 01-2.749 1.35m0 0a6.772 6.772 0 01-3.044 0" />
                     </svg>
-
                 </div>
                 <div class="">
                     <h2 class="text-[#ffff] text-center py-5">
@@ -226,73 +174,8 @@ const HomePage = ()=>{
     <!-- ABOUT ME -->
     ${about()}
     <!-- PROJECT -->
-    <div id="project" class="w-full bg-[#232529]">
-        <div class="max-w-6xl m-auto py-[50px]">
-            <div class="text-center">
-                <p class="text-[22px] text-[#f75023]">Project</p>
-                <h4 class="text-[40px] text-[#ffff]">My Amazing Works</h4>
-            </div>
-            <div class="">
-                <div class="">
-                    <ul class="flex items-center justify-center py-[20px]">
-                        <li class=""><a class=" bg-[#F75023] mx-2 px-7 py-[3px] rounded-md text-[#ffff] text-[16px]"
-                                href="#">ALL</a></li>
-                        <li class="">
-                            <a class="mx-2 px-7 py-[3px] hover:bg-[#f75023] border border-[#F75023] rounded-md text-[#ffff] text-[16px]"
-                                href="#">HTML/CSS</a>
-                        </li>
-                        <li class="">
-                            <a class="mx-2 px-7 py-[3px] hover:bg-[#f75023] border border-[#F75023] rounded-md text-[#ffff] text-[16px]"
-                                href="#">PHP</a>
-                        </li>
-                        <li class="">
-                            <a class="mx-2 px-7 py-[3px] hover:bg-[#f75023] border border-[#F75023] rounded-md text-[#ffff] text-[16px]"
-                                href="#">JS</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="grid grid-cols-3 gap-4 py-[30px]">
-                ${project.map(function(item){
-                    return `
-                    <div class="item">
-                    <div class="rounded-xl overflow-hidden">
-                        <a href="">
-                            <img class="hover:scale-110 transition w-full rounded-md"
-                                src="${item.gallery}"
-                                alt="">
-                        </a>
-                    </div>
-                    <div class="py-3">
-                        <a href="">
-                            <h2 class="text-[#ffff]">${item.name}</h2>
-                        </a>
-                        <div class="flex items-center py-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                stroke-width="1.5" stroke="currentColor" class="w-[14px] text-[#f75023]">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z" />
-                            </svg>
-                            <span class="text-[#ffff] text-[10px] pl-[10px] pt-[2px]">${item.date}</span>
-                        </div>
-                        <ul class="">
-                            <li class="">
-                                <a class="px-2 py-[1px] hover:bg-[#f75023] border border-[#F75023] rounded-md text-[#ffff] text-[12px]"
-                                    href="">${item.language}</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div>
-                        <a href="https://github.com/Dev-HongSonNguyen"
-                            class="text-[10px] text-[#ffff] font-bold tracking-[1px] border px-10 py-2 border-[#f75023] hover:bg-[#f75023] hover:text-[#ffff] rounded-md">View
-                            source code git </a>
-                    </div>
-                </div>
-                    `
-                }).join("")}
-                </div>
-            </div>
-        </div>
-    </div>
+    ${project()}
+    
     <!-- SKILL -->
     <div class="bg-[#2b2d33] w-full" style="border-bottom: 1px solid #f8f8ff">
         <div class="max-w-6xl m-auto pt-[50px] pb-[100px]" id="skill">

@@ -4,9 +4,11 @@ import { useEffect, useState } from "../lib"
 
 const projectListAdmin = ()=>{
     const [projects, setProject] = useState([]);
+    
     useEffect(()=>{
         axios.get("https://s2qbne-8080.preview.csb.app/api/APIproject").then(({data})=>setProject(data))
     },[])
+    console.log(projects);
     useEffect(()=>{
         const btn_delete = document.querySelectorAll(".btn_delete");
         for(let btn of btn_delete){
@@ -25,24 +27,31 @@ const projectListAdmin = ()=>{
     <div class="max-w-6xl m-auto my-5">
     <h1 class="text-center text-[#f75023] font-bold">MY PROJECT</h1>
     <a class="text-[#ffff] bg-[#f75023] px-5 py-1 mb-2 inline-block text-[14px]" href="/admin/projectAddAdmin">ADD</a>
-    <table class="w-full border">
+    <table class="w-full border text-[10px]">
         <thead class="border">
             <th class="border text-[#ffff]">STT</th>
             <th class="border text-[#ffff]">NAME PROJECT</th>
-            <th class="border text-[#ffff]">DATE</th>
             <th class="border text-[#ffff]">IMAGE</th>
+            <th class="border text-[#ffff]">DATE</th>
+            <th class="border text-[#ffff]">ROLE</th>
+            <th class="border w-[10%] text-[#ffff]">PREVIEW</th>
+            <th class="border w-[20%] text-[#ffff]">DESCRIPTION</th>
+            <th class="border w-[20%] text-[#ffff]">CATEGORY</th>
             <th class="border text-[#ffff]">ACTION</th>
         </thead>
         ${projects.map(function(item, index){
             return `
             <tbody>
                 <tr class="text-center">
-                    <td class="border text-[#ffff]">${index+1}</td>
-                    <td class="border text-[#ffff]">${item.name}</td>
-                    <td class="border text-[#ffff]">${item.date}</td>
-                    <td class="border text-[#ffff]">${item.language}</td>
-                    <td class="border"><img class="w-[300px] m-auto my-5" src="${item.gallery}" alt=""></td>
-                    <td class="border text-[#ffff]">
+                    <td class="border px-2 text-[#ffff]">${index+1}</td>
+                    <td class="border px-2 text-[#ffff]">${item.name}</td>
+                    <td class="border"px-2 ><img class="w-[100px] m-auto my-5" src="${item.gallery}" alt=""></td>
+                    <td class="border px-2 text-[#ffff]">${item.date}</td>
+                    <td class="border px-2 text-[#ffff]">${item.role}</td>
+                    <td class="border px-2 text-[#ffff]">${item.preview}</td>
+                    <td class="border px-2 text-[#ffff] text-justify">${item.des}</td>
+                    <td class="border px-2 text-[#ffff] text-justify">${item.categoryId}</td>
+                    <td class="border px-2 text-[#ffff]">
                         <button data-id=${item.id} class="bg-red-600 p-5 py-2 text-[#ffff] btn_delete">DELETE</button>
                         <a href="/admin/projectEditAdmin/${item.id}" class="bg-blue-900 p-5 py-[11px] text-[#ffff]">SETTING</a>
                     </td>
