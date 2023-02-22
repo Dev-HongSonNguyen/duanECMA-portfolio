@@ -103,7 +103,7 @@ const contact = ()=>{
                                 class="w-full text-[#ffff] bg-transparent border border-[#6f6b80] rounded-md py-3 px-7 outline-none mt-[16px]"
                                 name="" id="note" cols="30" rows="10" placeholder="Write your message here" id="note"></textarea>
                         </div>
-                        <input type="submit" class="text-[16px] text-[#f75023] tra font-bold tracking-[1px] border px-10 py-2 border-[#f75023] hover:bg-[#f75023] hover:text-[#ffff] rounded-md mt-[10px]">
+                        <button class="text-[16px] text-[#f75023] tra font-bold tracking-[1px] border px-10 py-2 border-[#f75023] hover:bg-[#f75023] hover:text-[#ffff] rounded-md mt-[10px]">Submit</button>
                     </form>
                 </div>
             </div>

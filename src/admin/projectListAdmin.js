@@ -36,7 +36,7 @@ const projectListAdmin = ()=>{
             <th class="border text-[#ffff]">ROLE</th>
             <th class="border w-[10%] text-[#ffff]">PREVIEW</th>
             <th class="border w-[20%] text-[#ffff]">DESCRIPTION</th>
-            <th class="border w-[20%] text-[#ffff]">CATEGORY</th>
+            <th class="border w-[10%] text-[#ffff] text-center">CATEGORY</th>
             <th class="border text-[#ffff]">ACTION</th>
         </thead>
         ${projects.map(function(item, index){

@@ -27,6 +27,10 @@ const headerAdmin = ()=>{
                     </li>
                     <li><a id=""
                             class="text-[16px] text-[#ffff] hover:text-[#f75023] tra font-bold tracking-[1px]"
+                            href="/admin/processListAdmin">Process</a>
+                    </li>
+                    <li><a id=""
+                            class="text-[16px] text-[#ffff] hover:text-[#f75023] tra font-bold tracking-[1px]"
                             href="/admin/userAdmin">Acount Admin</a>
                     </li>
                     <li><a href="/"

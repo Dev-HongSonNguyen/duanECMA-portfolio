@@ -10,6 +10,12 @@ body {
     font-family: 'Fira Sans', sans-serif !important;
     background-color: #232529;
 }
+#detail{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
 /* #model_project_container{
     position: fixed;
     top: 0;
