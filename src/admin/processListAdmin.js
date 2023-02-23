@@ -46,7 +46,7 @@ const processListAdmin = () => {
                 </tr>
             </tbody>
             `
-        })}
+        }).join("")}
     </table>
 </div>
   `
