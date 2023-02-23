@@ -33,7 +33,7 @@ const HomePage = ()=>{
                                 class="text-[16px] text-[#ffff] hover:text-[#f75023] tra font-bold tracking-[1px]"
                                 href="#skill">Skill</a>
                         </li>
-                        <li><a href="/admin/projectAdmin" id="btn_open" class="bg-[#f75023] text-[#ffff] tra font-bold tracking-[1px] border px-10 py-2 border-[#f75023] hover:bg-[#2b2d33] rounded-md block">ADMIN</a>
+                        <li><a href="#/admin/projectAdmin" id="btn_open" class="bg-[#f75023] text-[#ffff] tra font-bold tracking-[1px] border px-10 py-2 border-[#f75023] hover:bg-[#2b2d33] rounded-md block">ADMIN</a>
                         </li>
                     </ul>
                 </div>

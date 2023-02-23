@@ -11,7 +11,7 @@ const projectItem = ({item}) => {
   return `
   <div class="item py-5">
         <div class="rounded-xl overflow-hidden">
-            <a href="/project/detailProject/${item.id}" id="btn_show_project">
+            <a href="#/project/detailProject/${item.id}" id="btn_show_project">
                 <img class="w-full rounded-md"
                     src="${item.gallery}"
                     alt="">
